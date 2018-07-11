@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<title>测试</title>
+</head>
+<body>
+	<form id="upload-form" name="upload-form" method="POST" enctype="multipart/form-data" action="#">
+		<input id="upfile" type="file" name="file">
+		<!--  隐藏 div 用于存放 js 把对象转换成的 input 标签-->
+		<div style="display: none;" id="upfile-add-input"></div>
+        <div style="margin-top: 5%">
+            <input type="button" onclick="ajaxUpload();" value="提交">
+            <input type="reset" value="重置">
+        </div>
+	</form>
+	
+	<script>
+		var student = {
+				'id' : 1,
+				'name': 'Joden_He',
+				'subjectList' : [
+					{
+						'id': 1,
+						'name': '语文',
+						'score': 80,
+						'teacher': {
+							'id': 1,
+							'name': '王老师'
+						}
+					},
+					{
+						'id': 2,
+						'name': '数学',
+						'score': 85,
+						'teacher': {
+							'id': 2,
+							'name': '谢老师'
+						}
+					},
+					{
+						'id': 3,
+						'name': '英语',
+						'score': 90
+					}
+				]
+		};
+		
+		
+		/**
+	     * @param url 请求路径
+	     * @param f document.querySelector('#formUpload');
+	     * @param hideDiv 隐藏的div，用于存放自动生成的input
+	     * @param params 请求参数
+	     *
+	     */
+	    function ajaxUpload(e) {
+	    	 var url = "/upload";
+	    	 var f = document.querySelector('#upload-form');
+	    	 var params = student;
+	    	 var hideDiv = $('#upfile-add-input');
+	        
+	    	 addInput(params, hideDiv);
+	        // 获取请求参数
+	        var o = new FormData(f);
+	        
+	        // 清空自动生成的input
+	        //$(hideDiv).html('');
+	        
+	        $.ajax({
+	            'url': url,
+	            'type': 'POST',
+	            'data': o,
+	            'contentType': false,
+	            'processData': false,
+	            'success': function (result) {
+	            	alert(result);
+	            },
+	            'error': function() {
+	            	alert('error');
+	            }
+	        });
+	    }
+	     
+	     /**
+		 * 将对象转换成 input 存储于隐藏的 div 中
+		 * @param hideDiv 隐藏的div，用于存放自动生成的input
+		 * @param params 请求参数
+		 *
+		 */
+	    function addInput(params, hideDiv) {
+	    	$.each(params, function (k, v) {
+	        	if (typeof v == 'object') {
+	        		var obj = new Object();
+	        		$.each(v, function(i, v2) {
+	        			if (typeof i == 'number') {/* 数组时 */
+	        				var key = k+'['+i+']';
+	        				obj[key] = v2;
+	        			} else { /* 普通对象时 */
+	        				var key = k+'.'+i;
+	        				obj[key] = v2;
+	        			}
+	        		});
+	        		v = obj;
+	        		addInput(v,hideDiv);
+	        	} else {
+	        		if (v) {
+		                if (v instanceof Date) {
+		                    $(hideDiv).append('<input name="' + k + '" value="' + v.Format("yyyy-MM-dd hh:mm:ss") + '">');
+		                } else {
+		                    $(hideDiv).append('<input name="' + k + '" value="' + v + '">');
+		                }
+		            }
+	        	}
+	        });
+	    }
+	</script>
+</body>
+</html>
