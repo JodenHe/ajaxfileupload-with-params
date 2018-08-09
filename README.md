@@ -1,4 +1,5 @@
 # ajaxfileupload-with-params
+[![Build Status](https://travis-ci.org/JodenHe/ajaxfileupload-with-params.svg?branch=master)](https://travis-ci.org/JodenHe/ajaxfileupload-with-params) 
 [![GitHub issues](https://img.shields.io/github/issues/JodenHe/ajaxfileupload-with-params.svg)](https://github.com/JodenHe/ajaxfileupload-with-params/issues) 
 [![GitHub forks](https://img.shields.io/github/forks/JodenHe/ajaxfileupload-with-params.svg)](https://github.com/JodenHe/ajaxfileupload-with-params/network) 
 [![GitHub stars](https://img.shields.io/github/stars/JodenHe/ajaxfileupload-with-params.svg)](https://github.com/JodenHe/ajaxfileupload-with-params/stargazers) 
