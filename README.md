@@ -1,4 +1,9 @@
 # ajaxfileupload-with-params
+[![GitHub issues](https://img.shields.io/github/issues/JodenHe/ajaxfileupload-with-params.svg)](https://github.com/JodenHe/ajaxfileupload-with-params/issues) 
+[![GitHub forks](https://img.shields.io/github/forks/JodenHe/ajaxfileupload-with-params.svg)](https://github.com/JodenHe/ajaxfileupload-with-params/network) 
+[![GitHub stars](https://img.shields.io/github/stars/JodenHe/ajaxfileupload-with-params.svg)](https://github.com/JodenHe/ajaxfileupload-with-params/stargazers) 
+[![GitHub license](https://img.shields.io/github/license/JodenHe/ajaxfileupload-with-params.svg)](https://github.com/JodenHe/ajaxfileupload-with-params/blob/master/LICENSE)
+
 ajax 文件上传带参数，spring mvc，支持复杂参数
 
 ## 介绍
